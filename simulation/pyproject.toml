@@ -1,0 +1,9 @@
+[project]
+name = "agentoscope-sim"
+version = "0.1.0"
+description = "Interventional model comparison for agency detection: observation is confounded, intervention reveals, richness is a false friend, and the agency ladder — for The Agentoscope"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+]

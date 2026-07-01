@@ -1,0 +1,110 @@
+{
+  "seed": 20260701,
+  "observation_confounded": {
+    "N": 300,
+    "auc": 0.4944777777777778,
+    "agent_mean": -2.6605298669972757,
+    "passive_mean": -2.6364350401164742,
+    "agent_max": -0.05642973816873109,
+    "frac_agent_positive": 0.0,
+    "r_auc": 0.49,
+    "r_agent_mean": -2.7,
+    "r_agent_max": -0.06,
+    "r_agent_max_abs": 0.06
+  },
+  "intervention_reveals": {
+    "N": 300,
+    "auc": 1.0,
+    "agent_mean": 589.0119588111778,
+    "passive_mean": -66.05660962050334,
+    "per_intervention": 101.10014569570852,
+    "curve": [
+      -2.6772021868641858,
+      123.09410526100471,
+      213.26635894510213,
+      321.9205226371426,
+      411.8632852815367,
+      505.0256840156002,
+      603.9236719873869
+    ],
+    "uninformative_mean": -2.260185994585306,
+    "n_to_decisive": 1,
+    "r_auc": 1.0,
+    "r_agent_mean": 589,
+    "r_passive_mean": -66.1,
+    "r_per_intervention": 101.1,
+    "r_uninformative": -2.3,
+    "r_uninformative_abs": 2.3
+  },
+  "richness_false_friend": {
+    "battery": {
+      "diffusion": {
+        "A": -5.362827070542045,
+        "C": 0.025884580504729006
+      },
+      "settling gradient": {
+        "A": -65.642010187803,
+        "C": -1.5755400060346152
+      },
+      "chaotic flow": {
+        "A": -527.4124073868454,
+        "C": 1.0084054065578956
+      },
+      "thermostat": {
+        "A": 377.64230504802657,
+        "C": -1.0525642323486513
+      },
+      "chemotaxis": {
+        "A": 550.473441292233,
+        "C": -0.8136348297124217
+      },
+      "regenerator": {
+        "A": 583.1689994379835,
+        "C": -0.7679109203419006
+      }
+    },
+    "corr_complexity_agency": -0.6285315401312174,
+    "chaotic_A": -527.4124073868454,
+    "chaotic_C": 1.0084054065578956,
+    "chemotaxis_A": 550.473441292233,
+    "chemotaxis_C": -0.8136348297124217,
+    "r_corr": -0.63,
+    "r_corr_abs": 0.63,
+    "r_chaotic_A": -527.4,
+    "r_chaotic_C": 1.0,
+    "r_chemotaxis_A": 550.5,
+    "r_chemotaxis_C": -0.8
+  },
+  "agency_ladder": {
+    "ladder": [
+      [
+        "chaotic flow",
+        -531.1099918420016
+      ],
+      [
+        "settling gradient",
+        -66.67704201133697
+      ],
+      [
+        "diffusion",
+        -5.48398628768268
+      ],
+      [
+        "thermostat",
+        378.27013667042667
+      ],
+      [
+        "regenerator",
+        575.5173011109417
+      ],
+      [
+        "chemotaxis",
+        598.2731938229932
+      ]
+    ],
+    "equifinality_chemotaxis": 0.0,
+    "equifinality_regenerator": 1.0,
+    "r_equi_chemo": 0.0,
+    "r_equi_regen": 1.0
+  }
+}
