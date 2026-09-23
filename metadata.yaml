@@ -1,14 +1,31 @@
 slug: the-agentoscope
 web_slug: the-agentoscope
-title: "The Agentoscope: Why Agency Must Be Perturbed to Be Seen"
-header: "The Agentoscope"
-created: "2026-07"        # inception month (drives YYYY/MM archive path)
-date: "July 2026"             # publication month, e.g. "May 2026" (shown on web)
+title: 'The Agentoscope: Why Agency Must Be Perturbed to Be Seen'
+header: The Agentoscope
+created: 2026-07
+date: July 2026
 paper_dir: paper
 has_simulation: true
-claims_target: results.json   # results.json | claim-ledger | none
+claims_target: results.json
 repo: git@github.com:piatra-institute/papers-the-agentoscope.git
 github: https://github.com/piatra-institute/papers-the-agentoscope
-status: published             # draft | built | published
-abstract: |-
-  Humans detect agency without instruments. A person reads pursuit in a tiger, intention in a baby, and effort in a struggling animal, and reads it fast, involuntarily, and often wrongly, in a storm or a shadow or a moving triangle on a screen. The proposal here takes that human competence as a prototype the way the eye was a prototype for the lens: the optics of agency-detection are already implemented in us, and the question is what the instrument is doing and whether it can be extracted, corrected, and enlarged into an agentoscope that finds agency where unaided perception cannot, most promisingly not outward in weather but downward in living tissue. This paper argues that the instrument is a model comparison. A system is agentic to the degree that its behavior is better predicted by a model with a goal, a boundary, and a policy that corrects deviations than by a passive model of forces and noise, and the agency score is the log-ratio of the two. The paper's central and somewhat unwelcome result is that this score is unreadable from observation alone. When a system's goal is not moving, the goal-model's predictions coincide with those of a suitable passive dynamical model, so the two cannot be told apart by watching, and a simulated detector separates three hundred goal-seekers from three hundred passive attractors at an area under the ROC of 0.49, which is chance, with the agency score never once exceeding zero. Agency is not a property on the observational rung of Pearl's ladder. It appears only under intervention. When the goal is moved and the system tracks it, or the path is blocked and the system reroutes, the goal-model predicts what the passive model cannot, the score climbs by roughly 101 nats per informative intervention, and the same detector now separates the two populations perfectly. Not every perturbation informs: merely displacing a system, which a passive attractor and a goal-seeker both recover from, leaves the score at zero, so the discriminating interventions are exactly those that pit the goal against the mechanism. Two further results guard the instrument against the mistakes the human prototype makes. Dynamical richness is a false friend: across a battery of systems the agency score is uncorrelated with complexity and in fact runs the other way, a chaotic flow scoring the lowest of all despite the highest complexity, which is why a hurricane is a false positive and a liver is not. And agency is graded rather than binary, ordered by the instrument into a ladder on which passive systems score below zero and goal-directed ones above, with equifinality under obstruction, reaching the same goal by a different path, separating a mere set-point regulator that fails a barrier from a regenerator that routes around it. The agentoscope does not detect a soul. It reports where, at what scale, and under which interventions a goal is the better explanation, and its honest use points it at organoids, wounds, and regenerating tissue rather than at the sun. Ships a runnable simulation whose output carries every modelled number.
+status: published
+abstract: 'Humans detect agency without instruments, reading pursuit in a tiger and intention in a baby
+  quickly, involuntarily, and often wrongly, as in a storm or a moving triangle. Treating this competence
+  as a prototype, as the eye was for the lens, raises the question of what the detector computes and whether
+  it can be calibrated into an instrument, an agentoscope, applicable to systems such as living tissue.
+  The detector is modelled as a model comparison: the agency score is the log-likelihood ratio between
+  a model with a goal and a deviation-correcting policy and a passive model of forces and noise. When
+  the goal is fixed, the goal model is a special case of the passive linear model, so the score cannot
+  be positive under observation; in simulation, 300 goal-seekers and 300 passive attractors are separated
+  at an area under the ROC of 0.49, and no agent scores above zero. Agency therefore belongs to the interventional
+  rung of Pearl''s causal hierarchy. When the goal is moved and the system tracks it, the score rises
+  by about 101 nats per intervention and the populations separate at an AUC of 1.0; displacing the state
+  with the goal fixed leaves the score near zero. Across six systems, agency and dynamical complexity
+  are negatively correlated ($r = -0.63$), with a chaotic flow scoring lowest. The score is graded, negative
+  for passive systems and positive for goal-directed ones, and equifinality under obstruction separates
+  a set-point tracker, which reaches a walled-off goal in none of 100 trials, from a regenerator that
+  reaches it in all of them.'
+web_blurb: Agency scored as a log-likelihood ratio between goal-directed and passive models is invisible
+  to observation (AUC 0.49) and revealed by goal interventions (AUC 1.0). Complexity and agency are negatively
+  related across six simulated systems.

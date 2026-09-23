@@ -1,0 +1,17 @@
+{
+  "pdf_sha256": "9396b3e7614829cdc19af6c7b214a679514c388c28bcb54a6d33058be1b91af8",
+  "page_count": 9,
+  "pages_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "all_pages_inspected": true,
+  "notes": "All 9 pages inspected after the prose revision; both figures are now in the manuscript with descriptive panel titles, and the overlapping 'regenerator'/'chemotaxis' scatter labels were separated. Metadata-only rebuild: the web blurb in metadata.yaml, a hashed build input, changed, so the PDF was re-rendered (d1e4f5b82084 to 9396b3e76148); the rendered text is byte-for-byte identical and no page was re-inspected."
+}

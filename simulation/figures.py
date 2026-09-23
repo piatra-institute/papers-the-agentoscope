@@ -28,7 +28,7 @@ def plot_observation_vs_intervention(results: dict, path: str) -> None:
     ax1.hist(po, bins, alpha=0.6, color="#7f8c8d", label="passive")
     ax1.hist(ao, bins, alpha=0.6, color="#c0392b", label="agent")
     ax1.axvline(0, color="#2c3e50", lw=1)
-    ax1.set_title(f"Watching only: AUC = {o['auc']:.2f} (chance)", fontsize=10)
+    ax1.set_title(f"Observation only (reported AUC {o['auc']:.2f})", fontsize=10)
     ax1.set_xlabel("agency score A"); ax1.set_ylabel("count")
     ax1.legend(fontsize=8)
 
@@ -42,15 +42,15 @@ def plot_observation_vs_intervention(results: dict, path: str) -> None:
     ax2.hist(pi, 30, alpha=0.6, color="#7f8c8d", label="passive")
     ax2.hist(ai, 30, alpha=0.6, color="#c0392b", label="agent")
     ax2.axvline(0, color="#2c3e50", lw=1)
-    ax2.set_title(f"After intervention: AUC = {i['auc']:.2f}", fontsize=10)
+    ax2.set_title(f"Six goal interventions (reported AUC {i['auc']:.2f})", fontsize=10)
     ax2.set_xlabel("agency score A"); ax2.legend(fontsize=8)
 
     # score vs number of informative interventions
     ax3.plot(range(len(i["curve"])), i["curve"], "o-", color="#1b3a5b")
     ax3.axhline(5, color="#27ae60", ls="--", lw=1, label="decisive (log-BF 5)")
     ax3.axhline(i["uninformative_mean"], color="#e67e22", ls=":", lw=1,
-                label="uninformative perturbation")
-    ax3.set_title("The score climbs per informative intervention", fontsize=10)
+                label="state displacement, fixed goal")
+    ax3.set_title("Mean agency score versus goal interventions", fontsize=10)
     ax3.set_xlabel("number of goal interventions"); ax3.set_ylabel("agency score A")
     ax3.legend(fontsize=8)
 
@@ -67,11 +67,11 @@ def plot_richness(results: dict, path: str) -> None:
         col = "#c0392b" if d["A"] > 0 else "#7f8c8d"
         ax1.scatter(d["C"], d["A"], s=55, color=col, zorder=5)
         ax1.annotate(n, (d["C"], d["A"]), textcoords="offset points",
-                     xytext=(6, 4), fontsize=8)
+                     xytext=(6, -12) if n == "chemotaxis" else (6, 4), fontsize=8)
     ax1.axhline(0, color="#2c3e50", lw=1)
     ax1.set_xlabel("dynamical complexity  (unpredictability, nats/step)")
     ax1.set_ylabel("agency score A")
-    ax1.set_title(f"Richness is a false friend: corr = {f['corr_complexity_agency']:.2f}",
+    ax1.set_title(f"Agency score versus complexity (r = {f['corr_complexity_agency']:.2f}, 6 systems)",
                   fontsize=10)
     ax1.grid(alpha=0.25)
 
@@ -81,7 +81,7 @@ def plot_richness(results: dict, path: str) -> None:
     ax2.barh(names, vals, color=cols)
     ax2.axvline(0, color="#2c3e50", lw=1)
     ax2.set_xlabel("agency score A")
-    ax2.set_title("The agency ladder", fontsize=10)
+    ax2.set_title("Mean agency score by system", fontsize=10)
     ax2.grid(alpha=0.25, axis="x")
 
     fig.tight_layout(); fig.savefig(path, dpi=140); plt.close(fig)

@@ -1,0 +1,10 @@
+{
+  "manuscript_sha256": "57fcb78bd067ab53d8d90faf49baebcda22d41275a377a4893647dec92dae045",
+  "full_read": true,
+  "argument_review": true,
+  "structure_review": true,
+  "voice_review": true,
+  "source_review": true,
+  "final_read": true,
+  "notes": "Prose revision: descriptive headings replace aphoristic ones; self-reference, reflexive contrasts, negate-pivots, 'merely/simply' intensifiers and epigrammatic closers removed; abstract cut from ~520 to 260 words; the two simulation figures, previously generated but not included, are now embedded; model specification made explicit; Limitations and Conclusion separated."
+}
