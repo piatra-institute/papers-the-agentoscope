@@ -47,3 +47,7 @@ Pearl, J. (2009). *Causality: Models, Reasoning, and Inference* (2nd ed.). Cambr
 Rosenblueth, A., Wiener, N., and Bigelow, J. (1943). Behavior, purpose and teleology. *Philosophy of Science*, 10(1), 18–24. — purpose as feedback-organized behavior toward a goal, demonstrated by disturbance and correction.
 
 Bertalanffy, L. von (1968). *General System Theory: Foundations, Development, Applications*. George Braziller. — equifinality: reaching the same end from different initial conditions and by different paths; the top-of-ladder criterion.
+
+## Structured bibliography (2026-09-23)
+
+The inline reference list was migrated to references.yaml (CSL) and in-text citations to Pandoc [@id] syntax. Twelve entries were matched in Crossref. friston2010, klyubin2005, maturana1980 and pearl2009 were completed by hand from their DOI records (10.1038/nrn2787, 10.1109/CEC.2005.1554676, 10.1007/978-94-009-8947-4, 10.1017/CBO9780511803161); dennett1987, guthrie1993, michotte1963 (Miles translation, original 1946) and bertalanffy1968 were entered by hand from the details above. Source claims in claims.yaml were checked against abstracts from Crossref, OpenAlex or Europe PMC.

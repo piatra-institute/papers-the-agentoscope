@@ -1,0 +1,621 @@
+schema: 1
+coverage: reviewed
+reviewed_manuscript_sha256: c02d65b6003dc0edc33da83870e2d9950493686035ca38193a7635d8717b1de9
+claims:
+- id: abstract-n
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /observation_confounded/N
+    reported: '300'
+    decimals: 0
+    units: systems per population
+    conditions: fixed goal
+  passage: When the goal is fixed, the goal model is a special case of the passive linear model, so the
+    score cannot be positive under observation; in simulation, 300 goal-seekers and 300 passive attractors
+    are separated at an area under the ROC of 0.49, and no agent scores above zero.
+- id: abstract-auc-obs
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /observation_confounded/auc
+    reported: '0.49'
+    decimals: 2
+    units: area under the ROC
+    conditions: observation only
+  passage: When the goal is fixed, the goal model is a special case of the passive linear model, so the
+    score cannot be positive under observation; in simulation, 300 goal-seekers and 300 passive attractors
+    are separated at an area under the ROC of 0.49, and no agent scores above zero.
+- id: abstract-per-intervention
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/per_intervention
+    reported: '101'
+    decimals: 0
+    units: nats per goal intervention
+    conditions: mean over 80 runs per intervention count
+  passage: When the goal is moved and the system tracks it, the score rises by about 101 nats per intervention
+    and the populations separate at an AUC of 1.0; displacing the state with the goal fixed leaves the
+    score near zero.
+- id: abstract-auc-int
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/auc
+    reported: '1.0'
+    decimals: 1
+    units: area under the ROC
+    conditions: six goal interventions
+  passage: When the goal is moved and the system tracks it, the score rises by about 101 nats per intervention
+    and the populations separate at an AUC of 1.0; displacing the state with the goal fixed leaves the
+    score near zero.
+- id: abstract-corr
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /richness_false_friend/corr_complexity_agency
+    reported: '-0.63'
+    decimals: 2
+    units: Pearson r over six system means
+    conditions: goal-intervention battery
+  passage: Across six systems, agency and dynamical complexity are negatively correlated ($r = -0.63$),
+    with a chaotic flow scoring lowest.
+- id: abstract-equi-trials
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /design/equifinality_trials
+    reported: '100'
+    decimals: 0
+    units: trials
+    conditions: obstruction test
+  passage: The score is graded, negative for passive systems and positive for goal-directed ones, and
+    equifinality under obstruction separates a set-point tracker, which reaches a walled-off goal in none
+    of 100 trials, from a regenerator that reaches it in all of them.
+- id: obs-n
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /observation_confounded/N
+    reported: '300'
+    decimals: 0
+    units: systems per population
+    conditions: fixed goal
+  passage: In a simulation of 300 goal-seekers and 300 passive attractors observed with fixed goals, the
+    separation between the two populations is an area under the ROC of 0.49, indistinguishable from chance;
+    across all 300 agents the score never exceeds zero, with a maximum of $-0.06$.
+- id: obs-auc
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /observation_confounded/auc
+    reported: '0.49'
+    decimals: 2
+    units: area under the ROC
+    conditions: observation only
+  passage: In a simulation of 300 goal-seekers and 300 passive attractors observed with fixed goals, the
+    separation between the two populations is an area under the ROC of 0.49, indistinguishable from chance;
+    across all 300 agents the score never exceeds zero, with a maximum of $-0.06$.
+- id: obs-max
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /observation_confounded/agent_max
+    reported: '-0.06'
+    decimals: 2
+    units: nats
+    conditions: maximum agent score
+  passage: In a simulation of 300 goal-seekers and 300 passive attractors observed with fixed goals, the
+    separation between the two populations is an area under the ROC of 0.49, indistinguishable from chance;
+    across all 300 agents the score never exceeds zero, with a maximum of $-0.06$.
+- id: int-count
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /design/steps_per_intervention
+    reported: '40'
+    decimals: 0
+    units: steps per moved goal
+    conditions: six interventions
+  passage: In the simulation the same goal-seekers and passive attractors that were indistinguishable
+    at rest are subjected to six interventions, each moving the goal to a new location for 40 steps.
+- id: int-per
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/per_intervention
+    reported: '101'
+    decimals: 0
+    units: nats per intervention
+    conditions: mean score at six interventions minus mean at none, divided by six
+  passage: The goal-seeker tracks each moved target, a response only the agent model, which has access
+    to the goal variable, can predict; the autonomous passive model fails at every jump. The mean score
+    rises by about 101 nats per intervention, from $-2.7$ with none to 604 with six, and the populations
+    separate at an area under the ROC of 1.0.
+- id: int-curve0
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/curve/0
+    reported: '-2.7'
+    decimals: 1
+    units: nats
+    conditions: no interventions
+  passage: The goal-seeker tracks each moved target, a response only the agent model, which has access
+    to the goal variable, can predict; the autonomous passive model fails at every jump. The mean score
+    rises by about 101 nats per intervention, from $-2.7$ with none to 604 with six, and the populations
+    separate at an area under the ROC of 1.0.
+- id: int-curve6
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/curve/6
+    reported: '604'
+    decimals: 0
+    units: nats
+    conditions: six interventions
+  passage: The goal-seeker tracks each moved target, a response only the agent model, which has access
+    to the goal variable, can predict; the autonomous passive model fails at every jump. The mean score
+    rises by about 101 nats per intervention, from $-2.7$ with none to 604 with six, and the populations
+    separate at an area under the ROC of 1.0.
+- id: int-auc
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/auc
+    reported: '1.0'
+    decimals: 1
+    units: area under the ROC
+    conditions: six interventions
+  passage: The goal-seeker tracks each moved target, a response only the agent model, which has access
+    to the goal variable, can predict; the autonomous passive model fails at every jump. The mean score
+    rises by about 101 nats per intervention, from $-2.7$ with none to 604 with six, and the populations
+    separate at an area under the ROC of 1.0.
+- id: int-agent-mean
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/agent_mean
+    reported: '589'
+    decimals: 0
+    units: nats
+    conditions: 300 agents
+  passage: The agents reach a mean score of 589, while the passive systems, which ignore the goal perturbations,
+    average $-66$.
+- id: int-passive-mean
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/passive_mean
+    reported: '-66'
+    decimals: 0
+    units: nats
+    conditions: 300 passive attractors
+  passage: The agents reach a mean score of 589, while the passive systems, which ignore the goal perturbations,
+    average $-66$.
+- id: int-decisive
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /design/decisive_log_bayes_factor
+    reported: '5'
+    decimals: 0
+    units: log Bayes factor
+    conditions: threshold; n_to_decisive = 1 in results.json
+  passage: A single intervention already lifts the mean score past a log Bayes factor of 5 (Figure 1).
+- id: caption1-auc-obs
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /observation_confounded/auc
+    reported: '0.49'
+    decimals: 2
+    units: AUC
+    conditions: reported run
+  passage: 'Left: score distributions for goal-seekers and passive attractors with a fixed goal; the reported
+    AUC is 0.49 and no agent scores above zero.'
+- id: caption1-auc-int
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/auc
+    reported: '1.0'
+    decimals: 1
+    units: AUC
+    conditions: reported run
+  passage: 'Middle: score distributions after six goal interventions; the reported AUC is 1.0.'
+- id: caption1-per
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/per_intervention
+    reported: '101'
+    decimals: 0
+    units: nats per intervention
+    conditions: reported run
+  passage: 'Right: mean agency score against the number of goal interventions, rising by about 101 nats
+    per intervention; the dotted line marks the mean score ($-2.3$) when the state is displaced with the
+    goal fixed.'
+- id: caption1-uninf
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/uninformative_mean
+    reported: '-2.3'
+    decimals: 1
+    units: nats
+    conditions: state displaced
+  passage: 'Right: mean agency score against the number of goal interventions, rising by about 101 nats
+    per intervention; the dotted line marks the mean score ($-2.3$) when the state is displaced with the
+    goal fixed.'
+- id: uninformative
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/uninformative_mean
+    reported: '-2.3'
+    decimals: 1
+    units: nats
+    conditions: 120 runs
+  passage: If the state is displaced while the goal stays fixed, both a passive attractor and a goal-seeker
+    return, so the recovery is shared and the score remains near $-2.3$ in the simulation, no better than
+    observation.
+- id: complexity-corr
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /richness_false_friend/corr_complexity_agency
+    reported: '-0.63'
+    decimals: 2
+    units: Pearson r
+    conditions: six system means
+  passage: Across the battery the two scores are negatively correlated, $r = -0.63$ over the six system
+    means.
+- id: chaotic-a
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /richness_false_friend/chaotic_A
+    reported: '-527'
+    decimals: 0
+    units: nats
+    conditions: complexity run
+  passage: The chaotic flow has the highest complexity in the battery and the lowest agency score, about
+    $-527$, because when its putative goal is moved it does nothing goal-like and the goal model is penalized
+    for expecting a response.
+- id: chemotaxis-a
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /richness_false_friend/chemotaxis_A
+    reported: '550'
+    decimals: 0
+    units: nats
+    conditions: complexity run
+  passage: The chemotactic tracker, whose trajectory is simple, follows its moved target and scores about
+    550.
+- id: ladder-chaotic
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /agency_ladder/ladder/0/1
+    reported: '-531'
+    decimals: 0
+    units: nats
+    conditions: chaotic flow
+  passage: 'Below zero are the passive systems: the chaotic flow (about $-531$ in the ladder run), the
+    settling gradient ($-67$), and the diffusion ($-5.5$).'
+- id: ladder-settling
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /agency_ladder/ladder/1/1
+    reported: '-67'
+    decimals: 0
+    units: nats
+    conditions: settling gradient
+  passage: 'Below zero are the passive systems: the chaotic flow (about $-531$ in the ladder run), the
+    settling gradient ($-67$), and the diffusion ($-5.5$).'
+- id: ladder-diffusion
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /agency_ladder/ladder/2/1
+    reported: '-5.5'
+    decimals: 1
+    units: nats
+    conditions: diffusion
+  passage: 'Below zero are the passive systems: the chaotic flow (about $-531$ in the ladder run), the
+    settling gradient ($-67$), and the diffusion ($-5.5$).'
+- id: ladder-thermostat
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /agency_ladder/ladder/3/1
+    reported: '378'
+    decimals: 0
+    units: nats
+    conditions: thermostat (gain 0.15)
+  passage: 'Above zero are the goal-directed systems: the thermostat, with a lower controller gain (378),
+    and the chemotactic tracker and regenerator (598 and 576).'
+- id: ladder-chemotaxis
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /agency_ladder/ladder/5/1
+    reported: '598'
+    decimals: 0
+    units: nats
+    conditions: chemotactic tracker
+  passage: 'Above zero are the goal-directed systems: the thermostat, with a lower controller gain (378),
+    and the chemotactic tracker and regenerator (598 and 576).'
+- id: ladder-regenerator
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /agency_ladder/ladder/4/1
+    reported: '576'
+    decimals: 0
+    units: nats
+    conditions: regenerator
+  passage: 'Above zero are the goal-directed systems: the thermostat, with a lower controller gain (378),
+    and the chemotactic tracker and regenerator (598 and 576).'
+- id: battery-chemotaxis
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /richness_false_friend/battery/chemotaxis/A
+    reported: '550'
+    decimals: 0
+    units: nats
+    conditions: complexity run
+  passage: Without an obstacle the regenerator's dynamics coincide with the tracker's, and the order of
+    these two scores reverses between independent battery runs (550 and 583 in the complexity run), so
+    goal-shift scores alone do not separate them.
+- id: battery-regenerator
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /richness_false_friend/battery/regenerator/A
+    reported: '583'
+    decimals: 0
+    units: nats
+    conditions: complexity run
+  passage: Without an obstacle the regenerator's dynamics coincide with the tracker's, and the order of
+    these two scores reverses between independent battery runs (550 and 583 in the complexity run), so
+    goal-shift scores alone do not separate them.
+- id: caption2-corr
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /richness_false_friend/corr_complexity_agency
+    reported: '-0.63'
+    decimals: 2
+    units: Pearson r
+    conditions: six system means
+  passage: 'Left: mean agency score under goal intervention against dynamical complexity (entropy of the
+    best passive one-step prediction) for six systems; the correlation is $-0.63$.'
+- id: equi-tracker-trials
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /design/equifinality_trials
+    reported: '100'
+    decimals: 0
+    units: trials
+    conditions: obstruction test; tracker success rate 0.0
+  passage: A plain set-point tracker that moves only down the gradient toward its goal is stopped by the
+    wall and reaches the target in none of 100 trials.
+- id: equi-regenerator
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /agency_ladder/equifinality_regenerator
+    reported: '100'
+    scale: 100
+    decimals: 0
+    units: percent of trials reaching the goal
+    conditions: 100 trials with a wall
+  passage: A regenerator that detours around the obstacle reaches it in all 100.
+- id: conclusion-auc-obs
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /observation_confounded/auc
+    reported: '0.49'
+    decimals: 2
+    units: AUC
+    conditions: observation only
+  passage: Under observation, goal-seeking and passive relaxation are indistinguishable (AUC 0.49); under
+    goal interventions the score rises by about 101 nats per intervention and separates them completely
+    (AUC 1.0).
+- id: conclusion-per
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/per_intervention
+    reported: '101'
+    decimals: 0
+    units: nats per intervention
+    conditions: goal interventions
+  passage: Under observation, goal-seeking and passive relaxation are indistinguishable (AUC 0.49); under
+    goal interventions the score rises by about 101 nats per intervention and separates them completely
+    (AUC 1.0).
+- id: conclusion-auc-int
+  kind: computation
+  evidence:
+    file: simulation/output/results.json
+    run_id: agentoscope
+    pointer: /intervention_reveals/auc
+    reported: '1.0'
+    decimals: 1
+    units: AUC
+    conditions: goal interventions
+  passage: Under observation, goal-seeking and passive relaxation are indistinguishable (AUC 0.49); under
+    goal interventions the score rises by about 101 nats per intervention and separates them completely
+    (AUC 1.0).
+- id: gergely-infants
+  kind: source
+  evidence:
+    citation_id: gergely1995
+    locator: Abstract
+    verified: true
+    verification_note: Europe PMC abstract of DOI 10.1016/0010-0277(95)00661-H reports a habituation study
+      in which 12-month-olds generate expectations about the most rational means action an agent will
+      take to its goal. The Gergely and Csibra (2003) abstract describes the same teleological stance
+      and principle of efficient action.
+  passage: Above that is goal attribution, the reading of behaviour as efficient toward an end, which
+    infants perform in the first year, expecting an agent to take the shorter path to its target and showing
+    surprise when it does not [@gergely1995; @gergely2003].
+- id: baker-inverse-planning
+  kind: source
+  evidence:
+    citation_id: baker2009
+    locator: Abstract
+    verified: true
+    verification_note: Europe PMC abstract of DOI 10.1016/j.cognition.2009.07.005 infers mental states
+      by inverting a model of rational planning and relates this to Dennett's intentional stance.
+  passage: Cognitive science has modelled this layer as inverse planning, recovering an agent's goals
+    by inverting a model of how goals produce rational action [@baker2009], the same structure philosophers
+    describe as the intentional stance, a predictive strategy of ascribing beliefs and desires without
+    claiming to discover an inner substance [@dennett1987].
+- id: kass-bayes-factor
+  kind: source
+  evidence:
+    citation_id: kass1995
+    locator: Abstract
+    verified: true
+    verification_note: Abstract of DOI 10.1080/01621459.1995.10476572 reviews the Bayes factor as a measure
+      of evidence between hypotheses and notes it does not require nested models.
+  passage: a Bayes factor in the standard sense, positive when the goal model predicts the data better
+    and negative when the passive model does [@kass1995].
+- id: conant-good-regulator
+  kind: source
+  evidence:
+    citation_id: conant1970
+    locator: Abstract
+    verified: true
+    verification_note: Abstract of DOI 10.1080/00207727008920220 states that any regulator that is maximally
+      successful and simple must be isomorphic with the system being regulated.
+  passage: 'The good-regulator theorem gives the underlying reason: any system that effectively regulates
+    a variable must contain a model of what it regulates, so a well-run controller and the system it controls
+    come to mirror each other [@conant1970].'
+- id: friston-blanket
+  kind: source
+  evidence:
+    citation_id: friston2013
+    locator: Abstract
+    verified: true
+    verification_note: Abstract of DOI 10.1098/rsif.2013.0475 describes a Markov blanket separating internal
+      and external states of a self-organizing system, leading to homoeostasis and a simple form of autopoiesis.
+  passage: Before scoring, the candidate unit must be specified, where the system ends and the environment
+    begins, and this individuation remains unsolved, whether posed as drawing a Markov blanket around
+    a self-organizing region or as identifying the self-producing closure of an autopoietic system [@friston2013;
+    @maturana1980].
+- id: levin-goals
+  kind: source
+  evidence:
+    citation_id: levin2019
+    locator: Abstract
+    verified: true
+    verification_note: Abstract of DOI 10.3389/fpsyg.2019.02688 defines an Individual by the ability to
+      pursue goals at a scale of organization; Friston et al. (2015) abstract casts morphogenesis and
+      regeneration as free-energy minimization toward a target form.
+  passage: This is the operational core of the liver and embryo cases, in which a disturbed system navigates
+    to a target configuration by a route it would not otherwise take, the behaviour that the basal-cognition
+    literature reads as goal-directedness in anatomical and physiological space [@levin2019; @friston2015].
+- id: klyubin-empowerment
+  kind: source
+  evidence:
+    citation_id: klyubin2005
+    locator: Abstract
+    verified: true
+    verification_note: Abstract of DOI 10.1109/CEC.2005.1554676 defines empowerment as the information-theoretic
+      capacity of an agent's actuation channel as observed through its sensors.
+  passage: Other operationalizations of the same idea exist, including empowerment, an agent's control
+    over its future sensory states, and active inference, the minimization of expected surprise; the model-comparison
+    score is one member of this family [@klyubin2005; @friston2010].
+- id: agency-score-definition
+  kind: definition
+  rationale: Defines the instrument's output as a Bayes factor between a goal model and a passive model;
+    agency is thereby relative to the named alternative.
+  passage: The agency score is the log-likelihood ratio,
+- id: agency-excludes
+  kind: definition
+  rationale: Delimits the measured quantity so that a high score carries no claim about intelligence,
+    experience or standing.
+  passage: Agency in this sense excludes intelligence, consciousness, and personhood.
+- id: linear-models
+  kind: assumption
+  rationale: The passive family is linear and two-dimensional; a richer passive family could absorb more
+    behaviour at a complexity cost, as the Limitations section states.
+  passage: In the simulations the passive model is the best-fitting autonomous linear dynamics $x_{t+1}
+    = A x_t + b$, and the agent model is $x_{t+1} = x_t + k(g_t - x_t)$, coupled to a goal channel $g_t$
+    that the experimenter controls; both are fitted by least squares and scored by their one-step Gaussian
+    log-likelihood.
+- id: nesting-argument
+  kind: interpretation
+  rationale: Algebraic nesting of the constant-goal agent model within the passive linear family, which
+    explains the chance-level AUC under observation.
+  passage: With a constant goal, $x_t + k(g - x_t) = (1-k)x_t + kg$ is a member of the passive family,
+    so the passive model fits every constant-goal trajectory at least as well as the agent model and the
+    agency score cannot be positive.
+- id: intervention-needed
+  kind: interpretation
+  rationale: Generalizes the nesting result; without an intervention on the goal, no observer can separate
+    the two models from the data alone.
+  passage: The failure is a property of the data and would affect any observer.
+- id: counterfactual-signature
+  kind: interpretation
+  rationale: States which perturbations are informative (goal shifts, obstruction) and why state displacement
+    is not, following from the uninformative-perturbation result.
+  passage: 'The signature is counterfactual goal preservation: the system continues to reach or hold the
+    same target across changes of path, obstacle, and starting point that a passive process would not
+    survive.'
+- id: relative-score
+  kind: interpretation
+  rationale: The score is a margin against a named passive alternative, never a binary verdict.
+  passage: The score is relative to the models compared, a limitation inherent to the method.
+runs:
+- id: agentoscope
+  required: true
+  record: verification/agentoscope.json

@@ -1,10 +1,10 @@
 {
-  "manuscript_sha256": "57fcb78bd067ab53d8d90faf49baebcda22d41275a377a4893647dec92dae045",
+  "manuscript_sha256": "c02d65b6003dc0edc33da83870e2d9950493686035ca38193a7635d8717b1de9",
   "full_read": true,
   "argument_review": true,
   "structure_review": true,
   "voice_review": true,
   "source_review": true,
   "final_read": true,
-  "notes": "Prose revision: descriptive headings replace aphoristic ones; self-reference, reflexive contrasts, negate-pivots, 'merely/simply' intensifiers and epigrammatic closers removed; abstract cut from ~520 to 260 words; the two simulation figures, previously generated but not included, are now embedded; model specification made explicit; Limitations and Conclusion separated."
+  "notes": "Structured-evidence migration: inline bibliography converted to references.yaml (CSL) with Pandoc [@id] citations; claims.yaml ledger and an execution receipt (run agentoscope) added; prose unchanged."
 }

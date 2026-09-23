@@ -42,6 +42,10 @@ K_TRUE = 0.3          # controller gain of the agent systems
 NOISE = 0.05          # process noise
 T_OBS = 120           # steps of passive observation
 DIM = 2
+N_JUMPS = 6           # goal interventions in the intervention and battery studies
+SEG = 40              # steps each moved goal is held
+DECISIVE = 5.0        # log Bayes factor counted as decisive
+EQUI_REPS = 100       # trials in the obstruction (equifinality) test
 
 
 # --------------------------------------------------------------------------- #
@@ -152,7 +156,7 @@ def _const_goal(T, rng):
     return np.tile(c, (T, 1))
 
 
-def _intervened_goal(T, rng, n_jumps, seg=40):
+def _intervened_goal(T, rng, n_jumps, seg=SEG):
     """Constant for T_OBS, then a sequence of goal jumps (do-interventions)."""
     g = np.zeros((T, DIM))
     c = rng.normal(0, 1, DIM); g[:T_OBS] = c
@@ -193,24 +197,24 @@ def intervention_reveals(rng) -> dict:
     """Goal interventions separate agents from passive systems; the score grows
     per informative (goal-shift) intervention and not per uninformative one."""
     N = 300
-    T = T_OBS + 6 * 40
+    T = T_OBS + N_JUMPS * SEG
     a_agent, a_passive = [], []
     for _ in range(N):
-        g = _intervened_goal(T, rng, n_jumps=6)
+        g = _intervened_goal(T, rng, n_jumps=N_JUMPS)
         a_agent.append(agency_score(_sim_agent(g, rng), g))
         a_passive.append(agency_score(_sim_bowl(g, rng), g))
     a_agent, a_passive = np.array(a_agent), np.array(a_passive)
 
     # score vs number of informative interventions
     curve = []
-    for nj in range(0, 7):
-        T_n = T_OBS + nj * 40
+    for nj in range(0, N_JUMPS + 1):
+        T_n = T_OBS + nj * SEG
         vv = []
         for _ in range(80):
             g = _intervened_goal(T_n, rng, nj)
             vv.append(agency_score(_sim_agent(g, rng), g))
         curve.append(float(np.mean(vv)))
-    per_intervention = (curve[-1] - curve[0]) / 6.0
+    per_intervention = (curve[-1] - curve[0]) / float(N_JUMPS)
 
     # uninformative perturbation: displace the state but hold the goal constant
     unifo = []
@@ -228,7 +232,7 @@ def intervention_reveals(rng) -> dict:
         per_intervention=per_intervention,
         curve=curve,
         uninformative_mean=float(np.mean(unifo)),
-        n_to_decisive=int(np.argmax(np.array(curve) > 5.0)) if (np.array(curve) > 5).any() else -1,
+        n_to_decisive=int(np.argmax(np.array(curve) > DECISIVE)) if (np.array(curve) > DECISIVE).any() else -1,
         r_auc=round(_auc(a_agent, a_passive), 2),
         r_agent_mean=round(float(a_agent.mean())),
         r_passive_mean=round(float(a_passive.mean()), 1),
@@ -253,7 +257,7 @@ def _complexity(x):
 
 
 def _battery(rng, reps=60):
-    T = T_OBS + 6 * 40
+    T = T_OBS + N_JUMPS * SEG
     systems = {
         "diffusion": _sim_diffusion,
         "settling gradient": _sim_bowl,
@@ -266,7 +270,7 @@ def _battery(rng, reps=60):
     for name, fn in systems.items():
         As, Cs = [], []
         for _ in range(reps):
-            g = _intervened_goal(T, rng, 6)
+            g = _intervened_goal(T, rng, N_JUMPS)
             x = fn(g, rng)
             As.append(agency_score(x, g)); Cs.append(_complexity(x))
         out[name] = dict(A=float(np.mean(As)), C=float(np.mean(Cs)))
@@ -302,7 +306,7 @@ def agency_ladder(rng) -> dict:
 
     # obstruction test: goal on the far side of a wall; does the system arrive?
     def reach_rate(fn, with_barrier):
-        hits = 0; reps = 100
+        hits = 0; reps = EQUI_REPS
         for _ in range(reps):
             T = 160
             goal = np.array([2.0, 0.0])
@@ -348,6 +352,8 @@ def run() -> dict:
     rng = np.random.default_rng(SEED)
     return dict(
         seed=SEED,
+        design=dict(n_interventions=N_JUMPS, steps_per_intervention=SEG,
+                    decisive_log_bayes_factor=DECISIVE, equifinality_trials=EQUI_REPS),
         observation_confounded=observation_confounded(rng),
         intervention_reveals=intervention_reveals(rng),
         richness_false_friend=richness_false_friend(rng),

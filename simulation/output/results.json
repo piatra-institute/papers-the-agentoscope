@@ -1,5 +1,11 @@
 {
   "seed": 20260701,
+  "design": {
+    "n_interventions": 6,
+    "steps_per_intervention": 40,
+    "decisive_log_bayes_factor": 5.0,
+    "equifinality_trials": 100
+  },
   "observation_confounded": {
     "N": 300,
     "auc": 0.4944777777777778,

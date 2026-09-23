@@ -1,5 +1,5 @@
 {
-  "pdf_sha256": "9396b3e7614829cdc19af6c7b214a679514c388c28bcb54a6d33058be1b91af8",
+  "pdf_sha256": "bc00d15f48ddc5bb857ba3fae6234d18cd888dcc17bffd40dda7e3adab1d8163",
   "page_count": 9,
   "pages_inspected": [
     1,
@@ -13,5 +13,5 @@
     9
   ],
   "all_pages_inspected": true,
-  "notes": "All 9 pages inspected after the prose revision; both figures are now in the manuscript with descriptive panel titles, and the overlapping 'regenerator'/'chemotaxis' scatter labels were separated. Metadata-only rebuild: the web blurb in metadata.yaml, a hashed build input, changed, so the PDF was re-rendered (d1e4f5b82084 to 9396b3e76148); the rendered text is byte-for-byte identical and no page was re-inspected."
+  "notes": "All 9 pages inspected after the migration; citations (including Michotte [1946] 1963 and von Bertalanffy) and the citeproc reference list render correctly; no unresolved citation keys; figures unchanged. Metadata-only rebuild: the web blurb in metadata.yaml, a hashed build input, changed, so the PDF was re-rendered (2108ea177e1b to bc00d15f48dd); the rendered text is byte-for-byte identical and no page was re-inspected."
 }

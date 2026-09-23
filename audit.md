@@ -3,6 +3,17 @@
 Dated log of editorial passes and verification runs. Newest first.
 See the workspace docs (run `papers docs`): writing-pipeline.md §7 and refresh-pipeline.md.
 
+## 2026-09-23 — structured-evidence migration
+
+Structured-evidence migration (references and claims).
+- references.yaml: 20 CSL entries. 12 matched in Crossref; 4 completed by hand from DOI records (friston2010, klyubin2005, maturana1980, pearl2009); 4 books entered by hand (dennett1987, guthrie1993, michotte1963, bertalanffy1968). "(von Bertalanffy, 1968)" converted by hand. The legacy reference list is replaced by the citeproc-rendered list (Chicago author-date).
+- Bibliographic corrections: conant1970 record case normalized and a stray dagger removed from the title; heider1944 page range completed (243-259); levin2019 volume and article number added. No prose or numerical corrections.
+- Simulation: analyses.py names the design constants it already used (N_JUMPS 6, SEG 40, DECISIVE 5.0, EQUI_REPS 100) and writes them to a new design block so the prose statements "six interventions ... 40 steps", "log Bayes factor of 5" and "100 trials" bind; the seeded run reproduces every previously stored value, and figures are byte-identical. An earlier receipt from a run before the edit is retained in verification/ as the tool keeps prior receipts.
+- claims.yaml: 53 claims (39 computation, 7 source, 4 interpretation, 2 definition, 1 assumption). Computation claims bind every number in the abstract, body, captions and conclusion to simulation/output/results.json under run agentoscope. Source claims verified against abstracts: Gergely et al. 1995 (12-month-olds expect the rational means), Baker et al. inverse planning, Kass and Raftery Bayes factors, Conant and Ashby good regulator, Friston 2013 Markov blanket, Levin 2019 goal-pursuing individuals, Klyubin et al. empowerment.
+- Not verified, not bound: Heider and Simmel, Michotte, Dennett, Guthrie, Barrett (hyperactive agency detection not in abstract), Barandiaran et al. (intelligence/consciousness/personhood distinction not in abstract), Rosenblueth et al. negative feedback (abstract does not state it), Pearl, von Bertalanffy equifinality, Maturana and Varela, Friston 2010.
+- Execution receipt: verification/agentoscope.json (uv run python run_all.py).
+- metadata claims_target: results.json -> claim-ledger.
+
 ## 2026-09-23 — prose revision
 
 Prose rewritten against the house standards. Headings made descriptive (Abstract, 1 Introduction, 2 Human agency detection, 3 Agency as a model comparison, 4 Observational equivalence of goal-seeking and passive relaxation, 5 Detection by intervention, 6 Dynamical complexity and agency, 7 Graded agency and equifinality, 8 Limitations, 9 Conclusion). "Rather than" 14 -> 0, "this/the paper" 3 -> 0, "not X but Y" 6 -> 0, negate-pivots 3 -> 0, "merely/simply" 7 -> 0, "worth" 2 -> 0.
